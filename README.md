@@ -1,4 +1,5 @@
-**CICD Project**
+# CICD Project
+
 Welcome to the CICD Project repository! This project demonstrates a complete DevOps workflow, including CI/CD pipeline setup, containerization, infrastructure as code, and monitoring.
 
 **Getting Started**
