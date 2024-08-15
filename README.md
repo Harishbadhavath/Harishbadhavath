@@ -1,42 +1,22 @@
-# .gitlab-ci.yml
+**CICD Project**
+Welcome to the CICD Project repository! This project demonstrates a complete DevOps workflow, including CI/CD pipeline setup, containerization, infrastructure as code, and monitoring.
 
-stages:
-  - build
-  - test
-  - deploy
+**Getting Started**
+**Prerequisites**
+To work with this project, you need the following tools installed:
 
-variables:
-  MAVEN_CLI_OPTS: "-s .m2/settings.xml -B"
-  MAVEN_CLI: "mvn ${MAVEN_CLI_OPTS}"
+**Git**: To clone the repository.
+**Docker**: To build and run containers.
+**Docker Compose**: To set up multi-container applications.
+**Terraform**: For infrastructure provisioning.
+**Helm**: For managing Kubernetes applications.
+**GitLab**: If using GitLab CI/CD for pipeline execution.
 
-cache:
-  paths:
-    - .m2/repository
+Clone the Repository
+git clone https://github.com/yourusername/my-devops-project.git
+cd my-devops-project
 
-build:
-  stage: build
-  image: maven:3.8.4-openjdk-17
-  script:
-    - $MAVEN_CLI clean package
-  artifacts:
-    paths:
-      - target/*.jar
 
-test:
-  stage: test
-  image: maven:3.8.4-openjdk-17
-  script:
-    - $MAVEN_CLI test
 
-deploy:
-  stage: deploy
-  image: docker:latest
-  services:
-    - docker:dind
-  script:
-    - docker build -t myapp:latest .
-    - docker tag myapp:latest myrepo/myapp:latest
-    - docker push myrepo/myapp:latest
-  only:
-    - main
+
 
